@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hello World!">
+  <meta name="keywords" content="English,CS,">
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="在路上">
-<meta property="og:type" content="website">
-<meta property="og:title" content="关于">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
+<meta name="description" content="SOLID原则：软件开发人员的健全和可维护代码框架[带示例]～原文在这里～ PS： 括号里是我刚开始的翻译，对应的是Google翻译。">
+<meta name="keywords" content="English,CS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SOLID 原则 （翻译练习）">
+<meta property="og:url" content="http://yoursite.com/2019/06/20/SOLID-translation/index.html">
 <meta property="og:site_name" content="小困的被窝">
-<meta property="og:description" content="在路上">
+<meta property="og:description" content="SOLID原则：软件开发人员的健全和可维护代码框架[带示例]～原文在这里～ PS： 括号里是我刚开始的翻译，对应的是Google翻译。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-16T07:22:45.519Z">
+<meta property="og:updated_time" content="2019-06-20T13:49:51.303Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于">
-<meta name="twitter:description" content="在路上">
+<meta name="twitter:title" content="SOLID 原则 （翻译练习）">
+<meta name="twitter:description" content="SOLID原则：软件开发人员的健全和可维护代码框架[带示例]～原文在这里～ PS： 括号里是我刚开始的翻译，对应的是Google翻译。">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/about/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/20/SOLID-translation/">
 
 
 
 
 
-  <title>关于 | 小困的被窝</title>
+  <title>SOLID 原则 （翻译练习） | 小困的被窝</title>
   
 
 
@@ -250,34 +251,172 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/20/SOLID-translation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小困">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/imgs/avatar.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小困的被窝">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">关于</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <p>在路上</p>
-
+          <h1 class="post-title" itemprop="name headline">SOLID 原则 （翻译练习）</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-20T21:17:58+08:00">
+                2019-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h1 id="SOLID原则：软件开发人员的健全和可维护代码框架-带示例"><a href="#SOLID原则：软件开发人员的健全和可维护代码框架-带示例" class="headerlink" title="SOLID原则：软件开发人员的健全和可维护代码框架[带示例]"></a>SOLID原则：软件开发人员的健全和可维护代码框架[带示例]</h1><p><a href="https://khalilstemmler.com/articles/solid-principles/solid-typescript/" target="_blank" rel="noopener">～原文在这里～</a></p>
+<p>PS： 括号里是我刚开始的翻译，对应的是Google翻译。</p>
+<a id="more"></a>
+<p>（SOLID原则是一系列教我们如何构建尽可能稳定的，可维护的，灵活的函数和类的软件设计原则。）<br>SOLID原则是一套软件设计原则，它告诉我们如何构建我们的函数和类，使其尽可能健壮，可维护和灵活。</p>
+<p>文章来源是即将发布的免费电子书–《SOLID-使用Node.js和TypeScript介绍软件架构和设计原则》</p>
+<p>写代码就像浇筑混凝土。</p>
+<p>如果你过去写下的代码不能满足现在的需求，那么改变的代价可能是昂贵的。</p>
+<p>并且改变是不可避免的。</p>
+<p>所以，如果我们写代码，我们需要写可更改的代码。</p>
+<p>这做起来远比说起来要难。</p>
+<hr>
+<p>我最初写代码的方式是–如果我有足够的时间，我可以把它拼凑起来，并且让他们能用。</p>
+<p>（我发现，让代码可以工作是容易的，只要使用蛮力就可以。）<br>我意识到让事情第一次工作很容易。 真的，这只是蛮力。</p>
+<p>但是在已有的代码上添加功能？让他第二次，第三次伸直第四次工作起来？<br>（如果没有代码介绍，多次迭代是非常难的。【introduce 引入】）<br>如果不引入错误，就很难对事物进行多次迭代。</p>
+<p>所以我应该把上句话改为“如果我有足够的时间，我可以把它拼凑起来，并且让他们能用（一次）”</p>
+<p>在有18万行的JavaScript项目中，我发现快速迭代是很难的。迭代和渐进式改进是敏捷的全部。</p>
+<p>（最后，我疲于给用户推送bug和被自己写的一团糟的代码搞得一脸懵逼。）<br>最后，我厌倦了向用户推出bug并陷入我自己制造的混乱中。<br>我意识到一些事情需要改变了！</p>
+<p>我开始学TypeScript和软件设计。</p>
+<hr>
+<p>当我们最初开始编码的时候，总是会忽略软件设计。</p>
+<p>（我们为什么会这样呢？当我们熟练掌握一门编程语言后，我们把注意力放在努力理解未知的错误是什么意思和一些其他的让人烦恼的事情。【achieve dexterity with a programming language】）<br>在我们使用编程语言实现灵巧之后，我们将精力集中在对抗未定义的错误，这意味着什么以及其他一些烦人的事情。</p>
+<p>（没提到的是）【Not to mention】<br>更不用说<br>这些日子进入JavaScript的世界是一个挑战。</p>
+<p>（JavaScript开发者在他们的领域有很多要去搞明白的东西，比如浏览器，置换，构建工具和现在的TypeScript。）<br>JavaScript开发人员有很多工作要做（浏览器，转换，构建工具和现在的TypeScript）。</p>
+<p>JavaScript开发者的学习地图比Java和C开发者的要复杂许多。</p>
+<p>所以今天，我来这里是为JavaScript开发人员提供关于软件设计为主题的知识，他们不会容忍编写另一个脆弱的Node.js后端的想法。【flimsy 劣质的；不结实的；薄而易损坏的；不足信的】</p>
+<p>In order to go fast, we need to go well<br>为了走得快，我们需要走得好</p>
+<h2 id="什么是SOLID原则？"><a href="#什么是SOLID原则？" class="headerlink" title="什么是SOLID原则？"></a>什么是SOLID原则？</h2><p>SOLID原则是一套软件设计原则，它告诉我们如何构建我们的函数和类，使其尽可能健壮，可维护和灵活。</p>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/English/" rel="tag"># English</a>
+          
+            <a href="/tags/CS/" rel="tag"># CS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/17/computer-network/" rel="next" title="深入理解计算机网络笔记">
+                <i class="fa fa-chevron-left"></i> 深入理解计算机网络笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -310,8 +449,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -373,6 +521,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SOLID原则：软件开发人员的健全和可维护代码框架-带示例"><span class="nav-number">1.</span> <span class="nav-text">SOLID原则：软件开发人员的健全和可维护代码框架[带示例]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是SOLID原则？"><span class="nav-number">1.1.</span> <span class="nav-text">什么是SOLID原则？</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
