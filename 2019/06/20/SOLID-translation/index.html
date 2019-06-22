@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="English,CS,">
+  <meta name="keywords" content="CS,English,">
 
 
 
@@ -80,17 +80,21 @@
 
 
 <meta name="description" content="SOLID原则：软件开发人员的健全和可维护代码框架[带示例]～原文在这里～ PS： 括号里是我刚开始的翻译，对应的是Google翻译。">
-<meta name="keywords" content="English,CS">
+<meta name="keywords" content="CS,English">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SOLID 原则 （翻译练习）">
 <meta property="og:url" content="http://yoursite.com/2019/06/20/SOLID-translation/index.html">
 <meta property="og:site_name" content="小困的被窝">
 <meta property="og:description" content="SOLID原则：软件开发人员的健全和可维护代码框架[带示例]～原文在这里～ PS： 括号里是我刚开始的翻译，对应的是Google翻译。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-20T13:49:51.303Z">
+<meta property="og:image" content="http://yoursite.com/.com//SOLID-ocp.png">
+<meta property="og:image" content="http://yoursite.com/.com//SOLID-ocp2.png">
+<meta property="og:image" content="http://yoursite.com/.com//SOLID-ocp3.png">
+<meta property="og:updated_time" content="2019-06-22T14:10:32.789Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SOLID 原则 （翻译练习）">
 <meta name="twitter:description" content="SOLID原则：软件开发人员的健全和可维护代码框架[带示例]～原文在这里～ PS： 括号里是我刚开始的翻译，对应的是Google翻译。">
+<meta name="twitter:image" content="http://yoursite.com/.com//SOLID-ocp.png">
 
 
 
@@ -357,6 +361,58 @@
 <p>所以今天，我来这里是为JavaScript开发人员提供关于软件设计为主题的知识，他们不会容忍编写另一个脆弱的Node.js后端的想法。【flimsy 劣质的；不结实的；薄而易损坏的；不足信的】</p>
 <p>In order to go fast, we need to go well<br>为了走得快，我们需要走得好</p>
 <h2 id="什么是SOLID原则？"><a href="#什么是SOLID原则？" class="headerlink" title="什么是SOLID原则？"></a>什么是SOLID原则？</h2><p>SOLID原则是一套软件设计原则，它告诉我们如何构建我们的函数和类，使其尽可能健壮，可维护和灵活。</p>
+<p>SOLID principles是一个助记缩略语，由Robert C. Martin (Bob大叔)在2004年左右推广开来。他们代表了:</p>
+<ol>
+<li>单一责任原则</li>
+<li>开闭原则</li>
+<li>里氏替换原则</li>
+<li>接口隔离原则</li>
+<li>依赖倒置原则</li>
+</ol>
+<h3 id="单一责任原则"><a href="#单一责任原则" class="headerlink" title="单一责任原则"></a>单一责任原则</h3><blockquote>
+<p>一个函数或者类要改变的理由应该之后一个</p>
+</blockquote>
+<p>因此，我们不应该因为在单个文件中代码看起来更干净而认为应该将代码分割，而是根据使用代码的用户的社会结构将代码分割。因为这才是真正决定改变的东西</p>
+<p>如果我们有一个人力资源部门，会计部门和IT部门都会用应用来计算薪酬，报告和节省时间，为每个部门着想，我们最好确保我们分离（或抽象）最有可能改变的操作。</p>
+<p>下面的代码违违反了SPR：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line">  public calculatePay (): number &#123;</span><br><span class="line">    <span class="comment">// implement algorithm for hr, accounting and it</span></span><br><span class="line">  &#125;</span><br><span class="line">  public reportHours (): number &#123;</span><br><span class="line">    <span class="comment">// implement algorithm for hr, accounting and it</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public save (): <span class="built_in">Promise</span>&lt;any&gt; &#123;</span><br><span class="line">    <span class="comment">// implement algorithm for hr, accounting and it</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（非常的糟糕。所有部门所用到的算法都在一个类里面。如果其中一个部门请求去改变他们的用到的算法，就会增加对其他部门算法的影响的风险。【ripple into 波及】）<br>这很糟糕，非常糟糕。每个部门的算法都位于同一个类中。如果一个部门请求对其各自算法中的一个进行更改，那么就有可能波及到另一个部门的算法</p>
+<p>如果想让这样的算法能工作，就会嵌套一些<code>if</code>或者<code>switch</code>语句</p>
+<p>设计小提示：如果在代码中看到许多的条件语句，那么这就是一个信号，告诉我们应该将这些条件语句重构为几个类</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">abstract <span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line">  <span class="comment">// This needs to be implemented</span></span><br><span class="line">  abstract calculatePay (): number;</span><br><span class="line">  <span class="comment">// This needs to be implemented</span></span><br><span class="line">  abstract reportHours (): number;</span><br><span class="line">  <span class="comment">// let's assume THIS is going to be the </span></span><br><span class="line">  <span class="comment">// same algorithm for each employee- it can</span></span><br><span class="line">  <span class="comment">// be shared here.</span></span><br><span class="line">  protected save (): <span class="built_in">Promise</span>&lt;any&gt; &#123;</span><br><span class="line">    <span class="comment">// common save algorithm</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HR</span> <span class="keyword">extends</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line">  calculatePay (): number &#123;</span><br><span class="line">    <span class="comment">// implement own algorithm</span></span><br><span class="line">  &#125;</span><br><span class="line">  reportHours (): number &#123;</span><br><span class="line">    <span class="comment">// implement own algorithm</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Accounting</span> <span class="keyword">extends</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line">  calculatePay (): number &#123;</span><br><span class="line">    <span class="comment">// implement own algorithm</span></span><br><span class="line">  &#125;</span><br><span class="line">  reportHours (): number &#123;</span><br><span class="line">    <span class="comment">// implement own algorithm</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IT</span> <span class="keyword">extends</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>好了很多，在社会结构中，每个员工有一个单独的地方，在这里，我们可以调整他们各自最有可能改变的算法。</p>
+<p>关键是根据使用应用程序的用户的社会结构来划分职责。</p>
+<h3 id="开闭原则"><a href="#开闭原则" class="headerlink" title="开闭原则"></a>开闭原则</h3><p>最初是在1980年由Bertrand Meyer写出的，Uncle Bob称这一原则为“面向对象设计中最重要的原则”。</p>
+<blockquote>
+<p>一个软件构件，应该对扩展开放，对修改关闭。</p>
+</blockquote>
+<p>大体上说，用这个原则写代码时，当你添加新的功能时，不需要修改现有的代码。</p>
+<p>这就是在我们软件架构中所追求的😤。能够这样设计你的软件，当最小数量的代码被修改后，就可以让从A点达到B点的。</p>
+<p>为了达成这个目标，我们写接口和类，指定更高级别的需要被执行的策略，然后我们用具体的类实现这些策略。</p>
+<blockquote>
+<p>邮件服务例子</p>
+</blockquote>
+<p>让我们看看，我们的老板让我们用SendGrid去发送邮件。</p>
+<p>所以我们写出一个具体的类，去连接SendGrid的API。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SendGridService</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span> (sendgridInstance) &#123;</span><br><span class="line">    <span class="keyword">this</span>.sg = sendgridInstance;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  sendMail (<span class="keyword">from</span>, to, body) &#123;</span><br><span class="line">    <span class="comment">// format the mail object to the sendgrid api shape</span></span><br><span class="line">    <span class="comment">// send it</span></span><br><span class="line">    <span class="comment">// create a result object </span></span><br><span class="line">    <span class="comment">// return the result (success, failure, bounded, etc)</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>三个月后，老板告诉我们用MailChimp取代SendGrid，因为SendGrid太贵了。</p>
+<p>所以我们写了一个具体的类MailChimpService。但是为了让他能使用，我们改变甚至可能破坏很多代码。</p>
+<p>我们如何更好的设计呢？</p>
+<p>根据开闭原则，我们应该设计一个接口，这个接口规定了邮件服务应该做什么，将具体的实现分离开。</p>
+<p><img src="/.com//SOLID-ocp.png" alt="OCP" title="OCP example"></p>
+<p>主要的思想就是将策略和实现分开，以便实现松散耦合。【loose coupling 松散耦合】</p>
+<blockquote>
+<p>高阶组件不会因为低阶组件的修改而受影响<br>Higher level-components are protected from changes to lower level components.</p>
+</blockquote>
+<p>这个原则通常伴随着依赖接口而不是实现的依赖倒置原则，与里氏替换原则的只要依赖相同的接口就能实现替换密切相关</p>
+<blockquote>
+<p>从构建的角度讲</p>
+</blockquote>
+<p>（这个原则在我们思考大型软件架构时依然很重要。）<br>当我们考虑软件架构的全局时，这个原则仍然很有意义。</p>
+<p>想象一下，有一些通用的应用程序，里面有一个处理请求，传递给用例（一些真正处理业务逻辑的东西），然后将结果展示给两个不同的界面–网页应用程序和手机应用程序</p>
+<p><img src="/.com//SOLID-ocp2.png" alt="OCP" title="OCP example"></p>
+<p>什么是高阶组件？ </p>
+<p>是用例！<br><img src="/.com//SOLID-ocp3.png" alt="OCP" title="OCP example"></p>
 
       
     </div>
@@ -374,9 +430,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/English/" rel="tag"># English</a>
-          
             <a href="/tags/CS/" rel="tag"># CS</a>
+          
+            <a href="/tags/English/" rel="tag"># English</a>
           
         </div>
       
@@ -531,7 +587,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SOLID原则：软件开发人员的健全和可维护代码框架-带示例"><span class="nav-number">1.</span> <span class="nav-text">SOLID原则：软件开发人员的健全和可维护代码框架[带示例]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是SOLID原则？"><span class="nav-number">1.1.</span> <span class="nav-text">什么是SOLID原则？</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SOLID原则：软件开发人员的健全和可维护代码框架-带示例"><span class="nav-number">1.</span> <span class="nav-text">SOLID原则：软件开发人员的健全和可维护代码框架[带示例]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是SOLID原则？"><span class="nav-number">1.1.</span> <span class="nav-text">什么是SOLID原则？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单一责任原则"><span class="nav-number">1.1.1.</span> <span class="nav-text">单一责任原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开闭原则"><span class="nav-number">1.1.2.</span> <span class="nav-text">开闭原则</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
