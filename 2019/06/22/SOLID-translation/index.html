@@ -82,19 +82,15 @@
 <meta name="description" content="SOLID原则：软件开发人员的健全和可维护代码框架[带示例]～原文在这里～ PS： 括号里是我刚开始的翻译，对应的是Google翻译。">
 <meta name="keywords" content="CS,English">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SOLID 原则 （翻译练习）">
-<meta property="og:url" content="http://yoursite.com/2019/06/20/SOLID-translation/index.html">
+<meta property="og:title" content="SOLID-translation">
+<meta property="og:url" content="http://yoursite.com/2019/06/22/SOLID-translation/index.html">
 <meta property="og:site_name" content="小困的被窝">
 <meta property="og:description" content="SOLID原则：软件开发人员的健全和可维护代码框架[带示例]～原文在这里～ PS： 括号里是我刚开始的翻译，对应的是Google翻译。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/.com//SOLID-ocp.png">
-<meta property="og:image" content="http://yoursite.com/.com//SOLID-ocp2.png">
-<meta property="og:image" content="http://yoursite.com/.com//SOLID-ocp3.png">
-<meta property="og:updated_time" content="2019-06-22T14:10:32.789Z">
+<meta property="og:updated_time" content="2019-06-22T16:24:44.564Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SOLID 原则 （翻译练习）">
+<meta name="twitter:title" content="SOLID-translation">
 <meta name="twitter:description" content="SOLID原则：软件开发人员的健全和可维护代码框架[带示例]～原文在这里～ PS： 括号里是我刚开始的翻译，对应的是Google翻译。">
-<meta name="twitter:image" content="http://yoursite.com/.com//SOLID-ocp.png">
 
 
 
@@ -124,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/20/SOLID-translation/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/22/SOLID-translation/">
 
 
 
 
 
-  <title>SOLID 原则 （翻译练习） | 小困的被窝</title>
+  <title>SOLID-translation | 小困的被窝</title>
   
 
 
@@ -267,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/20/SOLID-translation/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/22/SOLID-translation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小困">
@@ -284,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">SOLID 原则 （翻译练习）</h1>
+          <h1 class="post-title" itemprop="name headline">SOLID-translation</h1>
         
 
         <div class="post-meta">
@@ -296,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-20T21:17:58+08:00">
-                2019-06-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-22T22:17:10+08:00">
+                2019-06-22
               </time>
             
 
@@ -399,7 +395,7 @@
 <p>所以我们写了一个具体的类MailChimpService。但是为了让他能使用，我们改变甚至可能破坏很多代码。</p>
 <p>我们如何更好的设计呢？</p>
 <p>根据开闭原则，我们应该设计一个接口，这个接口规定了邮件服务应该做什么，将具体的实现分离开。</p>
-<p><img src="/.com//SOLID-ocp.png" alt="OCP" title="OCP example"></p>
+<!-- ![OCP](SOLID-ocp.png) -->
 <p>主要的思想就是将策略和实现分开，以便实现松散耦合。【loose coupling 松散耦合】</p>
 <blockquote>
 <p>高阶组件不会因为低阶组件的修改而受影响<br>Higher level-components are protected from changes to lower level components.</p>
@@ -410,9 +406,85 @@
 </blockquote>
 <p>（这个原则在我们思考大型软件架构时依然很重要。）<br>当我们考虑软件架构的全局时，这个原则仍然很有意义。</p>
 <p>想象一下，有一些通用的应用程序，里面有一个处理请求，传递给用例（一些真正处理业务逻辑的东西），然后将结果展示给两个不同的界面–网页应用程序和手机应用程序</p>
-<p><img src="/.com//SOLID-ocp2.png" alt="OCP" title="OCP example"></p>
+<!-- ![OCP](SOLID-ocp2.png) -->
 <p>什么是高阶组件？ </p>
-<p>是用例！<br><img src="/.com//SOLID-ocp3.png" alt="OCP" title="OCP example"></p>
+<p>是用例！<br><!-- ![OCP](SOLID-ocp3.png) --><br>如果用例改变了，那么他有可能影响到数据库，控制器和创建网页和手机视图的数据配置</p>
+<p>（但是如果网页和手机的视图修改了，需求会转化成影响到用例的可能性极小，因为用例包含了业务逻辑和实体）<br>但是，如果要更改Web或Mobile View，那么该需求将转化为影响用例的内容的可能性要小得多，因为用例包含业务逻辑和实体。</p>
+<p>再一次：</p>
+<blockquote>
+<p>高阶组件不会因为低阶组件的修改而受影响</p>
+</blockquote>
+<h3 id="里氏替换原则"><a href="#里氏替换原则" class="headerlink" title="里氏替换原则"></a>里氏替换原则</h3><p>二十世纪八十年代，Barbara Liskov 解释这一原则为：</p>
+<blockquote>
+<p>设Φ（x）是关于类型T的对象x可证明的属性。那么对于类型S的对象y，Φ（y）应该为真，其中S是T的子类型。</p>
+</blockquote>
+<p>不可否发，这个定义让人很困惑。</p>
+<p>最简单的解释是：我们可以用一个实现代替另一个。</p>
+<p>在Uncle Bob的《整洁架构》中，他这么说：</p>
+<blockquote>
+<p>（为了从通用部分构件软件系统，这些部分必须遵守一个约定–这些部分可以互相替换。）要从可互换的部件构建软件系统，这些部件必须遵守允许这些部件相互替换的约定。</p>
+</blockquote>
+<p>他是在说要用接口和抽象类。</p>
+<p>（我认为用我们在几分钟前给的邮件的例子是解释他最好的方式）<br>我想我们刚才给出的Mail示例是思考这个问题的最好方法</p>
+<p>我们已经定义了一个<code>IMailService</code>接口<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">type TransmissionResult = <span class="string">'Success'</span> | <span class="string">'Failure'</span> | <span class="string">'Bounced'</span></span><br><span class="line"></span><br><span class="line">interface IEmailTransmissionResult &#123;</span><br><span class="line">  result: TransmissionResult;</span><br><span class="line">  message?: string;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface IMailService &#123;</span><br><span class="line">  sendMail(email: IMail): <span class="built_in">Promise</span>&lt;IEmailTransmissionResult&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>只要他们实现了<code>IMailService</code>接口和所需的<code>sendMail(email: Mail)</code>方法，我们就可以运行不同的邮件服务</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SendGridEmailService</span> <span class="title">implements</span> <span class="title">IMailService</span> </span>&#123;</span><br><span class="line">  sendMail(email: IMail): <span class="built_in">Promise</span>&lt;IEmailTransmissionResult&gt; &#123;</span><br><span class="line">    <span class="comment">// algorithm</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MailChimpEmailService</span> <span class="title">implements</span> <span class="title">IMailService</span> </span>&#123;</span><br><span class="line">  sendMail(email: IMail): <span class="built_in">Promise</span>&lt;IEmailTransmissionResult&gt; &#123;</span><br><span class="line">    <span class="comment">// algorithm</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MailGunEmailService</span> <span class="title">implements</span> <span class="title">IMailService</span> </span>&#123;</span><br><span class="line">  sendMail(email: IMail): <span class="built_in">Promise</span>&lt;IEmailTransmissionResult&gt; &#123;</span><br><span class="line">    <span class="comment">// algorithm</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>并且我们之后可以将它‘依赖注入’到我们的类中，要确定我们用的它所属的接口，而不是具体实现之一。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CreateUserController</span> <span class="keyword">extends</span> <span class="title">BaseController</span> </span>&#123;</span><br><span class="line">  private emailService: IEmailService;</span><br><span class="line">  <span class="keyword">constructor</span> (emailService: IEmailService) &#123; <span class="comment">// like this 😇</span></span><br><span class="line">    <span class="keyword">this</span>.emailService = emailService;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  protected executeImpl (): <span class="keyword">void</span> &#123;</span><br><span class="line">    <span class="comment">// handle request</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// send mail</span></span><br><span class="line">    <span class="keyword">const</span> mail = <span class="keyword">new</span> Mail(...)</span><br><span class="line">    <span class="keyword">this</span>.emailService.sendMail(mail);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在，所有这些都是有效的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mailGunService = <span class="keyword">new</span> MailGunEmailService();</span><br><span class="line"><span class="keyword">const</span> mailchimpService = <span class="keyword">new</span> MailChimpEmailService();</span><br><span class="line"><span class="keyword">const</span> sendgridService = <span class="keyword">new</span> SendGridEmailService();</span><br><span class="line"></span><br><span class="line"><span class="comment">// any of these are valid </span></span><br><span class="line"><span class="keyword">const</span> createUserController = <span class="keyword">new</span> CreateUserController(mailGunService);</span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"><span class="keyword">const</span> createUserController = <span class="keyword">new</span> CreateUserController(mailchimpService);</span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"><span class="keyword">const</span> createUserController = <span class="keyword">new</span> CreateUserController(sendgridService);</span><br></pre></td></tr></table></figure>
+<p> 因为我们可以交换我们传入的<code>IEmailService</code>的实现，我们遵守了LSP。</p>
+<h3 id="接口隔离原则"><a href="#接口隔离原则" class="headerlink" title="接口隔离原则"></a>接口隔离原则</h3><blockquote>
+<p>防止类依赖于他们不需要的东西</p>
+</blockquote>
+<p>（ 为了防止这个，我们要确保真的将单独的功能分割到了接口中）<br>为了防止这种情况，我们应该确保将独特的功能分解为接口。</p>
+<p>即： 我们“隔离接口”</p>
+<p>并且，根据依赖倒置原则，我们应该只依赖于接口和抽象类。</p>
+<p>这里有一个著名的例子。</p>
+<blockquote>
+<p>三个用户操作例子</p>
+</blockquote>
+<p>假设我们有三个不同的<code>User</code>类， 他们在一个<code>Operations</code>类中使用三个不同的方法，所用对于每个<code>User</code>类，会依赖两个额外的不需要的操作。</p>
+<p>对于这个例子，这可能没什么。但是如果<code>Operations</code>类的构造函数要求我们注入所有的不同类别的依赖，以满足其他两个我们不需要的操作。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Operations</span> <span class="title">implements</span> <span class="title">U1Ops</span>, <span class="title">U2Ops</span>, <span class="title">U3Ops</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span> (</span><br><span class="line">    userRepo: IUserRepo, </span><br><span class="line">    emailService: IEmailService, </span><br><span class="line">    authService: IAuthService,</span><br><span class="line">    redisService: IRedisService,</span><br><span class="line">    ... // and more</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这才是真正的大忌。【 blaring 高声鸣响 no-no 】</p>
+<p>这有时会因为’CRUD优先设计‘的服务结束。但是为了修复他，我们可以在开始时就确保我们依赖的是我们需要的抽象。</p>
+<p>然后，如果因为依赖太多东西使创建<code>Operations</code>时太繁琐，以<code>User1</code>为例，我们可以创建一个只实现<code>U1Ops</code>的类</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User1Operations</span> <span class="title">implements</span> <span class="title">U1Ops</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span> (userRepo: IUserRepo) &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在<code>User1</code>只需要<code>User1Operations</code>并且不需要<code>Operations</code>中的其他垃圾。</p>
+<h3 id="依赖倒置原则"><a href="#依赖倒置原则" class="headerlink" title="依赖倒置原则"></a>依赖倒置原则</h3><blockquote>
+<p>抽象不应该依赖于具体，具体应该依赖于抽象</p>
+</blockquote>
+<p>什么是抽象呢？接口和抽象类</p>
+<p>什么是具体呢？实现类</p>
+<p>抽象不应该依赖于具体，好的，这意味着，不要做下面的事情：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">interface IMailService &#123;</span><br><span class="line">  <span class="comment">// refering to concrete "PrettyEmail" and "ShortEmailTransmissionResult" from an abstraction</span></span><br><span class="line">  sendMail(email: PrettyEmail): <span class="built_in">Promise</span>&lt;ShortEmailTransmissionResult&gt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">相反，应该做下面的：</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>javascript</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SendGridEmailService</span> <span class="title">implements</span> <span class="title">IMailService</span> </span>&#123;</span><br><span class="line">  <span class="comment">// concrete class relies on abstractions</span></span><br><span class="line">  sendMail(email: IMail): <span class="built_in">Promise</span>&lt;IEmailTransmissionResult&gt; &#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>你一般可以分辨当我用一个接口时用的是微软的代码风格，这种风格要求在接口前加一个“I”</p>
+<p>到目前为止，您已经在本文中看到了这一点。我们一直在引用抽象(接口和抽象类)，而不是具体的抽象。</p>
+<blockquote>
+<p>主要组件/细节组件</p>
+</blockquote>
+<p>我们不可能永远不谈具体类。他是我们真正将事情联系起来以使事情发生的方式。</p>
+<p>让我们来使用 express.js 的路由</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// user/http/router/index.js</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> express <span class="keyword">from</span> <span class="string">'express'</span></span><br><span class="line"><span class="keyword">import</span> &#123; Router &#125; <span class="keyword">from</span> <span class="string">'express'</span></span><br><span class="line"><span class="keyword">import</span> &#123; CreateUserController &#125; <span class="keyword">from</span> <span class="string">'../controllers'</span></span><br><span class="line"><span class="keyword">import</span> &#123; MailGunEmailService &#125; <span class="keyword">from</span> <span class="string">'../services'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mailGunService = <span class="keyword">new</span> MailGunEmailService();</span><br><span class="line"><span class="keyword">const</span> createUserController = <span class="keyword">new</span> CreateUserController(mailGunService);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> userRouter = Router();</span><br><span class="line"></span><br><span class="line">userRouter.post(<span class="string">'/new'</span>, (req, res) =&gt; createUserController.exec(req, res))</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">  userRouter</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们需要引用那些具体的<code>CreateUserController</code>和<code>MailGunEmailService</code>类，以便他们连接起来。</p>
+<p>但是我们仅仅是将他们连接起来。Uncle Bob叫他们为主要组件。他们虽然杂乱但是是必要的。</p>
+<p>虽然我们不应该从一个具体类中直接引用另一些具体类。</p>
+<p> 这就是我们能够测试代码的原因，因为如果我们不想进行API调用或依赖于我们目前不感兴趣的东西，我们就会让实现者传递一个模拟的依赖。</p>
+<p>因此，按下面的做<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">CreateUserController</span> <span class="keyword">extends</span> <span class="title">BaseController</span> </span>&#123;</span><br><span class="line">  private emailService: IEmailService; <span class="comment">// &lt;- abstraction</span></span><br><span class="line">  <span class="keyword">constructor</span> (emailService: IEmailService) &#123; <span class="comment">// &lt;- abstraction</span></span><br><span class="line">    <span class="keyword">this</span>.emailService = emailService;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  protected executeImpl (): <span class="keyword">void</span> &#123;</span><br><span class="line">    <span class="comment">// handle request</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// send mail</span></span><br><span class="line">    <span class="keyword">const</span> mail = <span class="keyword">new</span> Mail(...)</span><br><span class="line">    <span class="keyword">this</span>.emailService.sendMail(mail);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>而不是<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CreateUserController</span> <span class="keyword">extends</span> <span class="title">BaseController</span> </span>&#123;</span><br><span class="line">  <span class="comment">// we're limiting ourselves to a particlar concrete class.</span></span><br><span class="line">  private emailService: SendGridService; <span class="comment">// &lt;- concretion</span></span><br><span class="line">  <span class="keyword">constructor</span> (emailService: SendGridService) &#123; <span class="comment">// &lt;- concretion</span></span><br><span class="line">    <span class="keyword">this</span>.emailService = emailService;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  protected executeImpl (): <span class="keyword">void</span> &#123;</span><br><span class="line">    <span class="comment">// handle request</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// send mail</span></span><br><span class="line">    <span class="keyword">const</span> mail = <span class="keyword">new</span> Mail(...)</span><br><span class="line">    <span class="keyword">this</span>.emailService.sendMail(mail);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>千万不用做下面的<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; SendGridService &#125; <span class="keyword">from</span> <span class="string">'../../services'</span>; <span class="comment">// &lt;- source code dependency</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CreateUserController</span> <span class="keyword">extends</span> <span class="title">BaseController</span> </span>&#123;</span><br><span class="line">  <span class="comment">// impossible to mock for tests</span></span><br><span class="line">  private emailService: SendGridService = <span class="keyword">new</span> SendGridService(); <span class="comment">// &lt;- concretion</span></span><br><span class="line">  <span class="keyword">constructor</span> () &#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  protected executeImpl (): <span class="keyword">void</span> &#123;</span><br><span class="line">    <span class="comment">// handle request</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// send mail</span></span><br><span class="line">    <span class="keyword">const</span> mail = <span class="keyword">new</span> Mail(...)</span><br><span class="line">    <span class="keyword">this</span>.emailService.sendMail(mail);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>依赖注入框架<br>如果像这样连接依赖到可能有数百个依赖的类，而变得不可控制【get out of hand】,我们可以使用依赖注入框架去帮忙自动解决依赖项。</p>
+</blockquote>
+<blockquote>
+<p>更多关于依赖倒置</p>
+</blockquote>
+<p>如果你项探究更多，请查看<a href="https://khalilstemmler.com/wiki/dependency-inversion/" target="_blank" rel="noopener">wiki page</a>了解这个原则</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>我们刚刚完成了所有SOLID原则。</p>
+<p>如果您正在使用TypeScript，为了让您真正充分利用面向对象的软件设计工作，我建议您重新阅读本文几次并在编写TypeScript代码时再回过头来问自己“这是否遵循SOLID”？</p>
+<p>如果您对可以下载的内容感兴趣，我会在Node.js和TypeScript中应用SOLID原则时整理一本电子书（在发布之前是免费的）。</p>
+<p>如果你对可以打印的东西感兴趣，一定不要放过他。</p>
 
       
     </div>
@@ -587,7 +659,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SOLID原则：软件开发人员的健全和可维护代码框架-带示例"><span class="nav-number">1.</span> <span class="nav-text">SOLID原则：软件开发人员的健全和可维护代码框架[带示例]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是SOLID原则？"><span class="nav-number">1.1.</span> <span class="nav-text">什么是SOLID原则？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单一责任原则"><span class="nav-number">1.1.1.</span> <span class="nav-text">单一责任原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开闭原则"><span class="nav-number">1.1.2.</span> <span class="nav-text">开闭原则</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SOLID原则：软件开发人员的健全和可维护代码框架-带示例"><span class="nav-number">1.</span> <span class="nav-text">SOLID原则：软件开发人员的健全和可维护代码框架[带示例]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是SOLID原则？"><span class="nav-number">1.1.</span> <span class="nav-text">什么是SOLID原则？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单一责任原则"><span class="nav-number">1.1.1.</span> <span class="nav-text">单一责任原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开闭原则"><span class="nav-number">1.1.2.</span> <span class="nav-text">开闭原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#里氏替换原则"><span class="nav-number">1.1.3.</span> <span class="nav-text">里氏替换原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接口隔离原则"><span class="nav-number">1.1.4.</span> <span class="nav-text">接口隔离原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖倒置原则"><span class="nav-number">1.1.5.</span> <span class="nav-text">依赖倒置原则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.2.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
             
 
           </div>
