@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="小困的被窝">
 <meta property="og:description" content="Chapter1 数制和编码由于信息编码，IP地址格式转换，MAC地址格式转换需要了解数制的基本知识，所以有了本章内容。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-26T14:33:52.976Z">
+<meta property="og:updated_time" content="2019-06-27T13:38:28.053Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解计算机网络笔记">
 <meta name="twitter:description" content="Chapter1 数制和编码由于信息编码，IP地址格式转换，MAC地址格式转换需要了解数制的基本知识，所以有了本章内容。">
@@ -485,8 +485,46 @@
 <li>广域网其实是多个远程局域网的连接，所以OSI/RM包括了广域网和局域网通信的功能层次</li>
 <li>低四层，主要定义了如何进行端对端的数据传输。</li>
 <li>高三层，定义了终端系统的应用程序如何彼此通信。</li>
-<li>低三层，属于‘通信子网’</li>
-<li>高四层，属于‘资源子网’</li>
+<li>低三层，属于‘通信子网’，面向网络；主要打通了一条用于数据传输的网络通道。</li>
+<li>高四层，属于‘资源子网’，面向用户；主要为具体的网络应用提供应用平台和端对端的数据传输通道。</li>
+<li>并不是每一次通信都需要OSI的全部七层；但网络应用通信都要经过七层</li>
+<li>网络体系中的每一层不是针对具体的设备和软件而言的，而是针对网络功能</li>
+<li>遵循的规则<ol>
+<li>同层的各个网络节点有相同的层次结构和功能</li>
+<li>同一节点内相邻层之间通过接口通信</li>
+<li>每一层使用下一层提供的服务，并向上层提供服务</li>
+<li>不同节点的同等层按照协议实现对等层之间的通信</li>
+<li>见6，7点</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>TCP/IP协议体系结构<ol>
+<li>针对TCP/IP协议簇的广域网开发的</li>
+<li>分为四层</li>
+<li>由低到高：网络访问层，网络互连层，传输层，应用层</li>
+<li>和OSI/RM的对应<ol>
+<li>应用层 = 应用层 + 表示层 + 会话层</li>
+<li>传输层 = 传输层</li>
+<li>网络互连层 = 网络层</li>
+<li>网络访问层 = 数据链路层 + 物理层   </li>
+</ol>
+</li>
+<li>TCP/IP五层模型（最佳）<ol>
+<li>应用层 = 应用层 + 表示层 + 会话层</li>
+<li>传输层 = 传输层</li>
+<li>网络互连层 = 网络层</li>
+<li>数据链路层 = 数据链路层 </li>
+<li>物理层 = 物理层 </li>
+</ol>
+</li>
+</ol>
+</li>
+<li>局域网体系结构<ol>
+<li>有线以太局域网体系结构</li>
+<li>只有两层</li>
+<li>物理层和数据链路层</li>
+<li>数据链路层分为LLC子层和MAC子层</li>
 </ol>
 </li>
 </ol>
