@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="CS,">
+  <meta name="keywords" content="日记,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="TypeScript 学习笔记这周开始学习TypeScript &amp;amp; React.TypeScript～学习资料在这里～。">
-<meta name="keywords" content="CS">
+<meta name="description" content="这周六和大学同学一起吃饭，说到了我们这一代的一个困惑————没有理想，不知道自己人生的目标。因为没有理想，所以不知道自己喜欢什么，不知道该干什么，很迷茫。">
+<meta name="keywords" content="日记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TypeScript">
-<meta property="og:url" content="http://yoursite.com/2019/06/25/TypeScript/index.html">
+<meta property="og:title" content="升级日记（二）">
+<meta property="og:url" content="http://yoursite.com/2019/06/30/update-dairy2/index.html">
 <meta property="og:site_name" content="小困的被窝">
-<meta property="og:description" content="TypeScript 学习笔记这周开始学习TypeScript &amp;amp; React.TypeScript～学习资料在这里～。">
+<meta property="og:description" content="这周六和大学同学一起吃饭，说到了我们这一代的一个困惑————没有理想，不知道自己人生的目标。因为没有理想，所以不知道自己喜欢什么，不知道该干什么，很迷茫。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-25T12:31:03.494Z">
+<meta property="og:updated_time" content="2019-06-30T14:30:11.095Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TypeScript">
-<meta name="twitter:description" content="TypeScript 学习笔记这周开始学习TypeScript &amp;amp; React.TypeScript～学习资料在这里～。">
+<meta name="twitter:title" content="升级日记（二）">
+<meta name="twitter:description" content="这周六和大学同学一起吃饭，说到了我们这一代的一个困惑————没有理想，不知道自己人生的目标。因为没有理想，所以不知道自己喜欢什么，不知道该干什么，很迷茫。">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/25/TypeScript/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/30/update-dairy2/">
 
 
 
 
 
-  <title>TypeScript | 小困的被窝</title>
+  <title>升级日记（二） | 小困的被窝</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/25/TypeScript/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/30/update-dairy2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小困">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">TypeScript</h1>
+          <h1 class="post-title" itemprop="name headline">升级日记（二）</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-25T20:25:46+08:00">
-                2019-06-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-30T21:34:12+08:00">
+                2019-06-30
               </time>
             
 
@@ -330,34 +330,131 @@
       
 
       
-        <h1 id="TypeScript-学习笔记"><a href="#TypeScript-学习笔记" class="headerlink" title="TypeScript 学习笔记"></a>TypeScript 学习笔记</h1><p>这周开始学习TypeScript &amp; React.<br>TypeScript<a href="https://semlinker.com/ts-resource-list/" target="_blank" rel="noopener">～学习资料在这里～</a>。</p>
-<a id="more"></a>
-<h2 id="Article-one-一篇缺失的-TypeScript-介绍"><a href="#Article-one-一篇缺失的-TypeScript-介绍" class="headerlink" title="Article one 一篇缺失的 TypeScript 介绍"></a>Article one 一篇缺失的 TypeScript 介绍</h2><p><a href="https://zhuanlan.zhihu.com/p/28494162" target="_blank" rel="noopener">～原文在这里～</a></p>
-<h3 id="解释型语言和编译型语言（interpreted-language-and-compiled-language）"><a href="#解释型语言和编译型语言（interpreted-language-and-compiled-language）" class="headerlink" title="解释型语言和编译型语言（interpreted language and compiled language）"></a>解释型语言和编译型语言（interpreted language and compiled language）</h3><ol>
-<li>高级语言都需要被转化为机器码才能被计算机理解</li>
-<li>JavaScript是高级语言所以他需要这个转化过程。</li>
-<li>编译型语言的转化过程是在代码运行前执行的，例如GO语言，会执行<code>go build</code>的命令行工具编译<code>.go</code>。</li>
-<li>解释型语言的转化过程是在代码运行时进行的，且是从上到下，一行一行执行。例如bash， bash 解释器逐行读取我们的命令并且执行它。</li>
-<li>在用JavaScript的时候，我们没有编译这一步骤。但是他也不是一行一行执行的。其实他是编译型语言，只不过他被所谓的“JavaScript 引擎”或者是“特定的编译环境”编译过（eg: V8 引擎）</li>
-<li>编译阶段，就是我们在我们的编辑器或者 IDE 当中的代码转换成其它格式的代码的阶段。运行阶段，就是我们程序实际执行的阶段，函数就执行在“运行阶段”。</li>
-</ol>
-<p>开篇讲这个其实主要为了告诉我们，代码运行分为编译阶段和运行阶段，然后引出TypeScript是在编译阶段运行的。</p>
-<h3 id="动态类型和静态类型（dynamic-typed-languages-and-static-typed-languages）"><a href="#动态类型和静态类型（dynamic-typed-languages-and-static-typed-languages）" class="headerlink" title="动态类型和静态类型（dynamic typed languages and static typed languages）"></a>动态类型和静态类型（dynamic typed languages and static typed languages）</h3><ol>
-<li>在 JavaScript 中，值是具有类型的，而变量是可以随时保存任何类型的值。这也恰好是一个“动态类型语言”的定义。</li>
-<li>所以JavaScript是动态类型语言。</li>
-</ol>
-<h3 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h3><ol>
-<li>TypeScript 编译器基于我们编写程序的方式提供提示信息</li>
-<li>这个新的步骤作为我们自己的个人“编译阶段”，这将在我们的程序抵达 JavaScript 主引擎之前，确保我们的程序是以我们预期的方式编写的；这个阶段并不会将代码转换成低级的可执行文件。</li>
-<li>TypeScript === JavaScript + 静态类型</li>
-<li>TypeScript 编译器为我们输出的是删除类型注释的 JavaScript 代码</li>
-<li>对于 TypeScript 与我们的源代码的关系来说，一个很好的类比，就是拼写检查与我们在 Microsoft Word 中写的文档的关系。<ol>
-<li>它能告诉我们写的东西的客观的、直接的错误</li>
-<li>它可以提醒我们写的可能是错误的</li>
-<li>我们的来源可以用于其原始目的，无论工具是否存在错误</li>
-</ol>
-</li>
-</ol>
+        <p>这周六和大学同学一起吃饭，说到了我们这一代的一个困惑————没有理想，不知道自己人生的目标。因为没有理想，所以不知道自己喜欢什么，不知道该干什么，很迷茫。<a id="more"></a>可是现实又不太允许我们去不断尝试，因为换行业这件事情是非常危险的，一切都要重新开始，而大部分的职业其实都是需要一定的积累的。其实很多人都与我谈论过这个问题，但是大家其实也无法拿出什么切实有效的方法，只能说逞着年轻多折腾折腾，然后在30岁左右稳定下来。</p>
+<p>这周大连女子被打事件引起了轰动，我本身就在大连，看到刚爆出的监控视频时，着实让人难受。之后偶然看到我喜欢的b站up主站在两性角度谈论了这件事情，因为其实大多数的网络评论都是将男女放在了对立面，但是事实上，有很多男士都对被打的女子非常同情，我也相信，如果有男士当时在场的话一定会阻止。<br>不知什么时候，社会舆论突然有意将男女放在了对立面。什么女方要十万八万彩礼给家里弟弟结婚用，什么女子在房产证上写名字后半月离婚了，男子劈腿薄情等等，这些是我在和男同事聊天的时候，听他们说起的，他们的语气我听了非常难过，因为其实这些不好的人的不好与品行有关，和性别无关，大部分人也只是想遇到个自己喜欢也喜欢自己的人，平静快乐的度过一生罢了。我非常希望大家能改变这种观点。<br><a href="https://www.bilibili.com/video/av57295350" target="_blank" rel="noopener">~up视频在此~</a></p>
+<p>本周最喜欢的句子：“此心光明，亦复何言”</p>
+<h2 id="上周总结："><a href="#上周总结：" class="headerlink" title="上周总结："></a>上周总结：</h2><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>是否完成</th>
+<th>完成说明</th>
+<th>调整</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>健身运动</td>
+<td>❎</td>
+<td>周五实在没起来，其他都完成了</td>
+<td>美丽芭蕾太难了</td>
+</tr>
+<tr>
+<td>《深入理解计算机网络》</td>
+<td>👌</td>
+<td>无</td>
+<td>下周继续</td>
+</tr>
+<tr>
+<td>element ui 表格源码分析</td>
+<td>❎</td>
+<td>看了一点table.vue 和 table-store</td>
+<td>下周争取边看边写</td>
+</tr>
+<tr>
+<td>用typesecipt + react 写一个组件</td>
+<td>👌</td>
+<td>react内置了一些检查，没看过的话觉得挺难的</td>
+<td>无</td>
+</tr>
+<tr>
+<td>每天听一集shane口语听力课</td>
+<td>👌</td>
+<td>坚持下来了，觉得自己进步了，不知道是不是错觉</td>
+<td>无</td>
+</tr>
+<tr>
+<td>翻译一篇英文技术文章</td>
+<td>👌</td>
+<td>最大的问题是吧，我懂了可是我翻译出来的东西，不像人话</td>
+<td>无</td>
+</tr>
+<tr>
+<td>typescript 文档阅读</td>
+<td>👌</td>
+<td>到函数那一章了，还读了一篇入门文章</td>
+<td>继续下周至少两章</td>
+</tr>
+<tr>
+<td>《中华的另一种可能-魏晋风流》</td>
+<td>👌</td>
+<td>超级有趣哒</td>
+<td>无</td>
+</tr>
+<tr>
+<td>投稿一篇小文章（副业准备）</td>
+<td>🐱</td>
+<td>开始看一本关于写作的书</td>
+<td>下周要写一篇了</td>
+</tr>
+<tr>
+<td>剪辑视频（副业准备）</td>
+<td>🐱</td>
+<td>完全没准备呢</td>
+<td>下周要剪一个了</td>
+</tr>
+</tbody>
+</table>
+<h2 id="本周计划"><a href="#本周计划" class="headerlink" title="本周计划"></a>本周计划</h2><table>
+<thead>
+<tr>
+<th>星期</th>
+<th>周一</th>
+<th>周二</th>
+<th>周三</th>
+<th>周四</th>
+<th>周五</th>
+<th>周六 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>运动</td>
+<td>zoey瘦腿+颈部放松</td>
+<td>zoey瘦腿+泡沫轴放松</td>
+<td>超模25减肥操</td>
+<td>mamamia韩舞*8</td>
+<td>Hip Hop Abs</td>
+<td>游泳 </td>
+</tr>
+<tr>
+<td>美美哒</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>化妆和衣服搭配</td>
+</tr>
+</tbody>
+</table>
+<p>本周的学习任务：</p>
+<ul>
+<li>《深入理解计算机网络》第四章</li>
+<li>typescript 文档阅读，五六章</li>
+<li>element ui 表格源码分析</li>
+<li>用typesecipt + react 写一个组件</li>
+<li>每天听一集shane口语听力课</li>
+<li>翻译一篇英文技术文章</li>
+</ul>
+<p>其他任务：</p>
+<ul>
+<li>选择一个基金进行投资,到下月十五日截止</li>
+<li>《这样写出好故事：玩转剧情和结构》练习</li>
+<li>投稿一篇小文章（副业准备），两周，截止到七月六号</li>
+<li>剪辑视频（副业准备），两周，截止到七月六号</li>
+<li>《雪国》（课外阅读）</li>
+</ul>
 
       
     </div>
@@ -375,7 +472,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/CS/" rel="tag"># CS</a>
+            <a href="/tags/日记/" rel="tag"># 日记</a>
           
         </div>
       
@@ -388,8 +485,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/23/update-dairy1/" rel="next" title="升级日记（一）">
-                <i class="fa fa-chevron-left"></i> 升级日记（一）
+              <a href="/2019/06/30/fullstack-translation/" rel="next" title="我不想成为全栈工程师（翻译）">
+                <i class="fa fa-chevron-left"></i> 我不想成为全栈工程师（翻译）
               </a>
             
           </div>
@@ -397,10 +494,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/30/fullstack-translation/" rel="prev" title="我不想成为全栈工程师（翻译）">
-                我不想成为全栈工程师（翻译） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -534,7 +627,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TypeScript-学习笔记"><span class="nav-number">1.</span> <span class="nav-text">TypeScript 学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Article-one-一篇缺失的-TypeScript-介绍"><span class="nav-number">1.1.</span> <span class="nav-text">Article one 一篇缺失的 TypeScript 介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解释型语言和编译型语言（interpreted-language-and-compiled-language）"><span class="nav-number">1.1.1.</span> <span class="nav-text">解释型语言和编译型语言（interpreted language and compiled language）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态类型和静态类型（dynamic-typed-languages-and-static-typed-languages）"><span class="nav-number">1.1.2.</span> <span class="nav-text">动态类型和静态类型（dynamic typed languages and static typed languages）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TypeScript"><span class="nav-number">1.1.3.</span> <span class="nav-text">TypeScript</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#上周总结："><span class="nav-number">1.</span> <span class="nav-text">上周总结：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本周计划"><span class="nav-number">2.</span> <span class="nav-text">本周计划</span></a></li></ol></div>
             
 
           </div>

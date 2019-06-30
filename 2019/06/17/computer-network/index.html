@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="小困的被窝">
 <meta property="og:description" content="Chapter1 数制和编码由于信息编码，IP地址格式转换，MAC地址格式转换需要了解数制的基本知识，所以有了本章内容。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-27T13:38:28.053Z">
+<meta property="og:updated_time" content="2019-06-27T14:22:05.694Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解计算机网络笔记">
 <meta name="twitter:description" content="Chapter1 数制和编码由于信息编码，IP地址格式转换，MAC地址格式转换需要了解数制的基本知识，所以有了本章内容。">
@@ -521,14 +521,69 @@
 </ol>
 </li>
 <li>局域网体系结构<ol>
-<li>有线以太局域网体系结构</li>
+<li>有线以太局域网体系结构<ol>
 <li>只有两层</li>
 <li>物理层和数据链路层</li>
-<li>数据链路层分为LLC子层和MAC子层</li>
+<li>局域网属于广播型网络，存在介质征用现象；</li>
+<li>so，数据链路层分为数据链路控制（Logical Link Control,LLC）子层和介质访问控制（Media Access Control,MAC）子层</li>
+</ol>
+</li>
+<li>WLAN体系结构<ol>
+<li>也是局域网，与上面体系结构一样。</li>
+<li>但是因为传输介质和数据链路层技术和协议不同，所以体系结构中的内容不一样</li>
 </ol>
 </li>
 </ol>
-<h3 id="通信原理"><a href="#通信原理" class="headerlink" title="通信原理"></a>通信原理</h3><h3 id="设计考虑"><a href="#设计考虑" class="headerlink" title="设计考虑"></a>设计考虑</h3><h3 id="通信协议"><a href="#通信协议" class="headerlink" title="通信协议"></a>通信协议</h3>
+</li>
+<li>例说网络结构各层主要功能<ol>
+<li>物理层：构件计算机网络通信和数据传输的通道；好比我们出门必须依靠的各种道路，基本设施</li>
+<li>数据链路层：为同一局域网内的网络/数据通信提供点对点的数据传输通道；好比市内公路+交通规则</li>
+<li>网络层：为不同网段之间的数据转发提供路径选择，通过IP地址把数据包转发到目标节点，就是‘路由寻址’；好比车站，码头。</li>
+<li>传输层：为通信双方构建端对端的数据传输通道；好比国际航线</li>
+<li>会话层：为用户应用建立会话进程；</li>
+<li>表示层：对用户网路应用数据的具体解释（信息格式，加密等）</li>
+<li>应用层：接受用户的各种应用进程的调用</li>
+</ol>
+</li>
+</ol>
+<h3 id="通信原理"><a href="#通信原理" class="headerlink" title="通信原理"></a>通信原理</h3><ol>
+<li>通用特征：发送端是自上而下的发送，接收端是自下而上的接受；通信会话时，双方必须是逻辑上的对等层次</li>
+<li>网络体系结构的数据通信原理<ol>
+<li>发送端是把通信连接建立指令和用户应用数据从上层往下层除阿叔</li>
+<li>接收端是把通信连接建立整理和用户应用数据自下向上传输</li>
+</ol>
+</li>
+<li>网络体系结构的对等通信原理<ol>
+<li>因为：双方是对等层的会话才可能使用相同类型的协议，彼此才能“听懂”；每一层都是独立的，彼此不干预，不了解</li>
+<li>对等层之间传输的单位叫PUD（Protocol Data Unit，协议数据单元）<ol>
+<li>物理层为比特</li>
+<li>数据链路层是“帧”</li>
+<li>网络层为“分组”（或“包”，paket）</li>
+<li>传输层，在OSI中用TPDU（传输协议数据单元）；在TCP/IP中，TCP以数据段（segment）为单位，UDP以数据报（datagram）为单位</li>
+<li>会话层，表示层，应用层用数据报文</li>
+</ol>
+</li>
+<li>协议头和协议为尾的封装<ol>
+<li>协议头哦用来封装本层PDU，协议尾表示本层封装结束</li>
+<li>接收端，数据由低到高去掉下层的协议头和协议尾；</li>
+<li>发送端相反</li>
+<li>加协议头可以看作要一层层加上一个指明下达下层地址的信封，而接收端要一层层打开信封，以获取上层的地址信息</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="通信协议"><a href="#通信协议" class="headerlink" title="通信协议"></a>通信协议</h3><ol>
+<li>就是约束通信双方在利用某种协议进行通信时，必须遵从对应的规则和约定，已达成共识</li>
+<li>通信协议可以理解为：为了使网络中的不同设备能进行协同的数据通信而预先制定的一套通信双方互相了解和共同遵守的格式和约定</li>
+<li>网络协议三要素<ol>
+<li>语义：实现什么样的网络服务</li>
+<li>语法：如何实现</li>
+<li>同步：如何与对方协同工作（握手）</li>
+</ol>
+</li>
+</ol>
+
       
     </div>
     
@@ -649,7 +704,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -704,7 +759,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter1-数制和编码"><span class="nav-number">1.</span> <span class="nav-text">Chapter1 数制和编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter2-计算机网络概述"><span class="nav-number">2.</span> <span class="nav-text">Chapter2 计算机网络概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机网络发展史"><span class="nav-number">2.1.</span> <span class="nav-text">计算机网络发展史</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机网络的基本组成"><span class="nav-number">2.2.</span> <span class="nav-text">计算机网络的基本组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机网络拓扑结构"><span class="nav-number">2.3.</span> <span class="nav-text">计算机网络拓扑结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-3-计算机网络体系结构"><span class="nav-number">3.</span> <span class="nav-text">Chapter 3 计算机网络体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#典型计算机网络体系结构"><span class="nav-number">3.1.</span> <span class="nav-text">典型计算机网络体系结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通信原理"><span class="nav-number">3.2.</span> <span class="nav-text">通信原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设计考虑"><span class="nav-number">3.3.</span> <span class="nav-text">设计考虑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通信协议"><span class="nav-number">3.4.</span> <span class="nav-text">通信协议</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter1-数制和编码"><span class="nav-number">1.</span> <span class="nav-text">Chapter1 数制和编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter2-计算机网络概述"><span class="nav-number">2.</span> <span class="nav-text">Chapter2 计算机网络概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机网络发展史"><span class="nav-number">2.1.</span> <span class="nav-text">计算机网络发展史</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机网络的基本组成"><span class="nav-number">2.2.</span> <span class="nav-text">计算机网络的基本组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机网络拓扑结构"><span class="nav-number">2.3.</span> <span class="nav-text">计算机网络拓扑结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-3-计算机网络体系结构"><span class="nav-number">3.</span> <span class="nav-text">Chapter 3 计算机网络体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#典型计算机网络体系结构"><span class="nav-number">3.1.</span> <span class="nav-text">典型计算机网络体系结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通信原理"><span class="nav-number">3.2.</span> <span class="nav-text">通信原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通信协议"><span class="nav-number">3.3.</span> <span class="nav-text">通信协议</span></a></li></ol></li></ol></div>
             
 
           </div>
