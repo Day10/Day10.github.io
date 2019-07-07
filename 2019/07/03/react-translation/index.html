@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CS,English,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="react document(Hooks)经过两篇文章的翻译，我发现一个问题————翻译过后没有对比，所以无法知道自己翻译的对错，也无法像好的翻译学习。所以我决定翻译下 React Hooks 的文档，一方面可以学习 React，一方面可以和已有的好翻译对比，提高自己。">
+<meta name="keywords" content="CS,English">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React 文档翻译">
+<meta property="og:url" content="http://yoursite.com/2019/07/03/react-translation/index.html">
+<meta property="og:site_name" content="小困的被窝">
+<meta property="og:description" content="react document(Hooks)经过两篇文章的翻译，我发现一个问题————翻译过后没有对比，所以无法知道自己翻译的对错，也无法像好的翻译学习。所以我决定翻译下 React Hooks 的文档，一方面可以学习 React，一方面可以和已有的好翻译对比，提高自己。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-07T07:38:43.327Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React 文档翻译">
+<meta name="twitter:description" content="react document(Hooks)经过两篇文章的翻译，我发现一个问题————翻译过后没有对比，所以无法知道自己翻译的对错，也无法像好的翻译学习。所以我决定翻译下 React Hooks 的文档，一方面可以学习 React，一方面可以和已有的好翻译对比，提高自己。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/03/react-translation/">
+
+
+
+
+
+  <title>React 文档翻译 | 小困的被窝</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小困的被窝</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Viva La Vida</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/03/react-translation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小困">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/imgs/avatar.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小困的被窝">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">React 文档翻译</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-03T20:33:09+08:00">
+                2019-07-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="react-document-Hooks"><a href="#react-document-Hooks" class="headerlink" title="react document(Hooks)"></a>react document(Hooks)</h1><p>经过两篇文章的翻译，我发现一个问题————翻译过后没有对比，所以无法知道自己翻译的对错，也无法像好的翻译学习。所以我决定翻译下 React Hooks 的文档，一方面可以学习 React，一方面可以和已有的好翻译对比，提高自己。<a id="more"></a><br><a href="https://reactjs.org/docs/hooks-intro.html" target="_blank" rel="noopener">~英文原文~</a><br><a href="https://react.docschina.org/docs/hooks-intro.html" target="_blank" rel="noopener">~中文原文~</a><br>PS: 第一行是原文，第二行是我翻译的，第三行是文档的翻译。</p>
+<h2 id="介绍-Hooks"><a href="#介绍-Hooks" class="headerlink" title="介绍 Hooks"></a>介绍 Hooks</h2><p>Hooks are a new addition in React 16.8. They let you use state and other React features without writing a class.<br>Hooks 是 React16.8 新增的特性。他们可以让你在不写任何一个类的情况下，用 state 和其他的 React 特性。<br>Hook 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState &#125; <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Example</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Declare a new state variable, which we'll call "count"</span></span><br><span class="line">  <span class="comment">// 声明一个叫“count”的状态变量，</span></span><br><span class="line">  <span class="comment">// 声明一个新的叫做 “count” 的 state 变量</span></span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;p&gt;You clicked &#123;count&#125; times&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">      &lt;button onClick=&#123;() =&gt; setCount(count + 1)&#125;&gt;Click me&lt;/</span>button&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>This new function useState is the first “Hook” we’ll learn about, but this example is just a <strong>teaser</strong>. Don’t worry if it doesn’t make sense yet!<br>这个新函数“useState”是我们学的第一个“Hook”，但是这个例子只是个<strong>预告</strong>。如果你搞不清楚不要担心。<br>useState 是我们要学习的第一个 “Hook”，这个例子是<strong>简单演示</strong>。如果不理解也不用担心。</p>
+<p>You can start learning Hooks on the next page. On this page, we’ll continue by explaining why we’re adding Hooks to React and <strong>how they can help you write great applications</strong>.<br>你将在下一页开始学习 Hooks。在这一页，我们将继续介绍为什么我们要在 React 里加 Hook<strong>和他们如何帮助你写好的应用</strong>。<br>你将在下一章节正式开始学习 Hook。 这一章节，我们将会解释为什么会在 React 中加入 Hook，<strong>以及如何使用 Hook 写出更好的应用</strong>。</p>
+<blockquote>
+<p>注意<br>React 16.8.0 is the first release to support Hooks. When upgrading, don’t forget to update all packages, including React DOM. React Native will support Hooks in the next stable release.<br>React 16.8.0 是<strong>支持 Hooks 的第一个版本</strong>。当你升级时，<strong>不要忘记升级</strong>所有的包，包括 React DOM。React Natice 将在下一个稳定版本支持 Hooks<br>React 16.8.0 是<strong>第一个支持 Hook 的版本</strong>。升级时，<strong>请注意更新</strong>所有的 package，包括 React DOM。React Native 将在下一个稳定版本中支持 Hook。</p>
+</blockquote>
+<hr>
+<h2 id="视频介绍"><a href="#视频介绍" class="headerlink" title="视频介绍"></a>视频介绍</h2><p>At <strong>React Conf 2018</strong>, Sophie Alpert and Dan Abramov introduced Hooks, <strong>followed by</strong> Ryan Florence demonstrating how to refactor an application to use them. Watch the video here:<br>在<strong>2018 React 会议</strong>，Sophie Alpert 和 Dan Abramov 介绍里 Hooks，<strong>之后</strong>Ryan Florence 演示了如何用 Hooks 来重构你的应用。<br>在 <strong>React Conf 2018</strong> 上，Sophie Alpert 和 Dan Abramov 介绍了 Hook，<strong>紧接着</strong> Ryan Florence 演示了如何使用 Hook 重构应用。</p>
+<hr>
+<h2 id="没有重大变化（no-breaking-changes）没有破坏性改动"><a href="#没有重大变化（no-breaking-changes）没有破坏性改动" class="headerlink" title="没有重大变化（no breaking changes）没有破坏性改动"></a>没有重大变化（no breaking changes）没有破坏性改动</h2><p>但我们继续之前，请记住 Hooks 是：</p>
+<ul>
+<li>Completely opt-in. <strong>You can try Hooks in a few components without rewriting any existing code.</strong> But you don’t have to learn or use Hooks right now if you don’t want to.</li>
+<li>100% backwards-compatible. Hooks don’t contain any breaking changes.</li>
+<li><p>Available now. <strong>Hooks are now available with the release of v16.8.0.</strong></p>
+</li>
+<li><p>完全是可选的。<strong>你可以在不重新任何已有代码的前提下</strong>在几个组件中应用 Hooks。但是如果你不想用他，你就不必现在学习他。</p>
+</li>
+<li>100% 向后兼容（backwards-compatible）。Hooks 没有任何重大的变化。</li>
+<li><p>现在就可以用。<strong>Hooks 在发布 16.8.0 版本时，就可以用了。</strong></p>
+</li>
+<li><p>完全可选的。 <strong>你无需重写任何已有代码就</strong>可以在一些组件中尝试 Hook。但是如果你不想，你不必现在就去学习或使用 Hook。</p>
+</li>
+<li>100% 向后兼容的。 Hook 不包含任何破坏性改动。</li>
+<li>现在可用。 <strong>Hook 已发布于 v16.8.0。</strong></li>
+</ul>
+<p>There are no plans to remove classes from React. You can read more about the <strong>gradual adoption strategy</strong> for Hooks in the bottom section of this page.<br>没有任何计划从 React 中移除类。你可以在页面底部的小节阅读关于<strong>逐步采用战略</strong>（gradual adoption strategy）。<br>没有计划从 React 中移除 class。 你可以在本页底部的章节读到更多关于 Hook 的<strong>渐进策略</strong>。</p>
+<p><strong>Hooks don’t replace your knowledge of React concepts.</strong> Instead, Hooks provide a more direct API to the React concepts you already know: props, state, context, refs, and lifecycle. As we will show later, Hooks also offer a new powerful way to <strong>combine</strong> them.<br><strong>Hooks 不会代替你所知道的 React 概念。</strong>相反，Hooks 在你早已知道的 React 概念中提供了更多直接的 API，如 props,state,context,refs, 和 lifecycle。在之后，我们将展示，Hooks 提供了新的方法去<strong>关联</strong>他们。<br><strong>Hook 不会影响你对 React 概念的理解。</strong> 恰恰相反，Hook 为已知的 React 概念提供了更直接的 API：props， state，context，refs 以及生命周期。稍后我们将看到，Hook 还提供了一种更强大的方式来<strong>组合</strong>他们。</p>
+<p>If you just want to start learning Hooks, feel free to jump directly to the next page! You can also keep reading this page to learn more about why we’re adding Hooks, and how we’re going to start using them without rewriting our applications.<br>如果你只是想开始学 Hooks，你可以直接跳到下一页。你也可以在本页继续阅读，以了解为什么我们要增加 Hooks，和我们如何在不重写应用的前提下使用他。<br>如果不想了解添加 Hook 的具体原因，可以直接跳到下一章节开始学习 Hook！ 当然你也可以继续阅读这一章节来了解原因，并且可以学习到如何在不重写应用的情况下使用 Hook。</p>
+<hr>
+<h2 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h2><p><strong>Hooks solve a wide variety of seemingly unconnected problems in React that we’ve encountered over five years of writing and maintaining tens of thousands of components. Whether you’re learning React, use it daily, or even prefer a different library with a similar component model, you might recognize some of these problems.</strong><br>Hooks 解决了 React 中不同种类的似乎不相关的问题，这些问题在我们 5 年的书写和几万行组件维护中被遇到。不论你是否在学习 React，每天使用它，甚至你喜欢相似组件模型的其他库，你都有可能知道这些问题。<br>Hook 解决了我们五年来编写和维护成千上万的组件时遇到的各种各样看起来不相关的问题。无论你正在学习 React，或每天使用，或者更愿尝试另一个和 React 有相似组件模型的框架，你都可能对这些问题似曾相识。</p>
+<h3 id="在组件间复用有状态的逻辑是困难的"><a href="#在组件间复用有状态的逻辑是困难的" class="headerlink" title="在组件间复用有状态的逻辑是困难的"></a>在组件间复用有状态的逻辑是困难的</h3><p>React doesn’t offer <strong>a way to “attach” reusable behavior to a component</strong> (for example, connecting <strong>it</strong> to a store)<br>React 没有提供<strong>连接复用行为给组件</strong>（比如，将<strong>他</strong>连接到 store 上）。<br>React 没有提供<strong>将可复用性行为“附加”到组件的途径</strong>（例如，把<strong>组件</strong>连接到 store）。</p>
+<p>If you’ve worked with React for a while, <strong>you may be familiar with patterns like render props and higher-order components that try to solve this</strong>.<br>如果你已经用 React 一段时间了，<strong>你可能对用来解决这个问题的模式，比如渲染属性和高阶组件，比较熟悉</strong>。<br>如果你使用过 React 一段时间，<strong>你也许会熟悉一些解决此类问题的方案，比如 render props 和 高阶组件</strong>。</p>
+<p>But these patterns require you to restructure your components when you use them, which can be cumbersome and make code harder to follow.<br>但是这些模式，需要你重构你的组件，这是非常麻烦并且让你的代码很难执行。<br>但是这类方案需要重新组织你的组件结构，这可能会很麻烦，使你的代码难以理解。</p>
+<p>If you look at a typical React application in React DevTools, <strong>you will likely find a “wrapper hell” of</strong> components surrounded by layers of providers, consumers, higher-order components, render props, and other abstractions.<br>如果你看到一个标准的 React 引用，<strong>你可能找到“层叠地狱”</strong>，因为组件被包裹在一层层的 Providers，comsumers，高阶组件，渲染属性和其他抽象。<br>如果你在 React DevTools 中观察过 React 应用，你会发现由 providers，consumers，高阶组件，render props 等其他抽象层<strong>组成的组件会形成“嵌套地狱”</strong></p>
+<p><strong>While</strong> we could filter them out in DevTools, this <strong>points to</strong> a deeper underlying problem: React needs a better <strong>primitive</strong> for sharing <strong>stateful logic</strong>.<br><strong>当</strong>你将这些东西从 DevTools 过滤掉时，<strong>会造成</strong>更深层次的问题：React 需要更好的底层去共享<strong>有状态的逻辑</strong>。<br><strong>尽管</strong>我们可以在 DevTools 过滤掉它们，但这<strong>说明</strong>了一个更深层次的问题：React 需要为<strong>共享状态逻辑</strong>提供更好的<strong>原生途径</strong>。</p>
+<p>With Hooks, you can extract stateful logic from a component so it can be <strong>tested independently</strong> and reused. Hooks allow you to reuse stateful logic without changing your <strong>component hierarchy</strong>. <strong>This makes it easy to share Hooks among many components or with the community.<br>如果用 Hooks，你可以将有状态的逻辑从组件中分离，这样你可以</strong>尝试解耦<strong>和重用。Hooks 允许你在不改变你的</strong>组件继承<strong>的情况下复用你的有状态逻辑。这让你很容易在众多组件或者社区中共享你的 Hooks。<br>你可以使用 Hook 从组件中提取状态逻辑，使得这些逻辑可以</strong>单独测试<strong>并复用。Hook 使你在无需修改</strong>组件结构**的情况下复用状态逻辑。 这使得在组件间或社区内共享 Hook 变得更便捷。</p>
+<p>We’ll discuss this more in Building Your Own Hooks.<br>我们将在“创建你自己的 Hooks”中讨论更多。<br>具体将在自定义 Hook 中对此展开更多讨论</p>
+<h3 id="复杂组件变得难以理解（Complex-components-become-hard-to-understand）"><a href="#复杂组件变得难以理解（Complex-components-become-hard-to-understand）" class="headerlink" title="复杂组件变得难以理解（Complex components become hard to understand）"></a>复杂组件变得难以理解（Complex components become hard to understand）</h3><p>We’ve often had to maintain components that started out simple but grew into an unmanageable mess of stateful logic and side effects.<br>我们维护的组件，一开始总是非常简单，但是最后变成一些难以管理的状态逻辑和副作用。<br>我们经常维护一些组件，组件起初很简单，但是逐渐会被状态逻辑和副作用充斥</p>
+<p>Each lifecycle method often contains a mix of unrelated logic.<br>每个生命周期方法都包含一些不相关的逻辑。<br>每个生命周期常常包含一些不相关的逻辑。</p>
+<p>For example, components might perform some data fetching in componentDidMount and componentDidUpdate.<br>例如，组件经常在<code>componentDidMount</code>和<code>componentDidUpdate</code>中放获取数据的逻辑。<br>例如，组件常常在 componentDidMount 和 componentDidUpdate 中获取数据。</p>
+<p><strong>However, the same componentDidMount method might also contain some unrelated logic that sets up event listeners, with cleanup performed in componentWillUnmount</strong><br>虽然，<code>componentDidMount</code>方法中包含着设置事件监听的逻辑和<code>componentDidUpdate</code>中包含的清除事件监听的逻辑都不相关。<br>但是，同一个 componentDidMount 中可能也包含很多其它的逻辑，如设置事件监听，而之后需在 componentWillUnmount 中清除。</p>
+<p>Mutually related code that changes together gets split apart, but completely unrelated code ends up combined in a single method.<br>互相关联，会一起改变的的代码会被分割，但是最后完全无关的代码却在一个方法中。<br>相互关联且需要对照修改的代码被进行了拆分，而完全不相关的代码却在同一个方法中组合在一起。</p>
+<p>This makes it too easy to introduce bugs and inconsistencies.<br>这样很容易产生 bug 和不一致性。<br>如此很容易产生 bug，并且导致逻辑不一致。</p>
+<p>In many cases it’s not possible to break these components into smaller ones because the stateful logic is all over the place.<br>在许多案例中，因为状态逻辑已经无处不在，所以无法再将组件分割成更小的部分。<br>在多数情况下，不可能将组件拆分为更小的粒度，因为状态逻辑无处不在。</p>
+<p>It’s also difficult to test them.<br>这也使测试变得困难。<br>这也给测试带来了一定挑战。</p>
+<p>This is one of the reasons many people prefer to combine React with a separate state management library.<br>这也是很多人将 react 和一些分割状态管理库一起使用原因之一<br>同时，这也是很多人将 React 与状态管理库结合使用的原因之一。</p>
+<p>However, that often introduces too much abstraction, requires you to jump between different files, and makes reusing components more difficult.<br>虽然这样会产生非常多的抽象，会让你在不同文件之间跳转，使复用变得更加困难。<br>但是，这往往会引入了很多抽象概念，需要你在不同的文件之间来回切换，使得复用变得更加困难。</p>
+<p>To solve this, Hooks let you split one component into smaller functions based on what pieces are related (such as setting up a subscription or fetching data), rather than forcing a split based on lifecycle methods.<br>为了解决这个问题，Hooks 让我们根据关联度（比如设置订阅或者获取数据）而不是生命周期方法，将一个组件拆分成更小的函数；<br>为了解决这个问题，Hook 将组件中相互关联的部分拆分成更小的函数（比如设置订阅或请求数据），而并非强制按照生命周期划分。</p>
+<p>You may also opt into managing the component’s local state with a reducer to make it more predictable.<br>你可能选择用 reducer 管理组件的状态，来使它变得更加可预测。<br>你还可以使用 reducer 来管理组件的内部状态，使其更加可预测。</p>
+<p>We’ll discuss this more in Using the Effect Hook.<br>我们会在“用有效的 Hook”中讨论这个。<br>我们将在使用 Effect Hook 中对此展开更多讨论。</p>
+<h3 id="类让人和机器都很困惑（Classes-confuse-both-people-and-machines）（难以理解的-class）"><a href="#类让人和机器都很困惑（Classes-confuse-both-people-and-machines）（难以理解的-class）" class="headerlink" title="类让人和机器都很困惑（Classes confuse both people and machines）（难以理解的 class）"></a>类让人和机器都很困惑（Classes confuse both people and machines）（难以理解的 class）</h3><p>In addition to making code reuse and code organization more difficult, we’ve found that classes can be a large barrier to learning React.<br>除了代码复用和代码组织，我们发现类也是学习 React 的一大障碍。<br>除了代码复用和代码管理会遇到困难外，我们还发现 class 是学习 React 的一大屏障。</p>
+<p>You have to understand how this works in JavaScript, <strong>which is very different from how it works in most languages.</strong><br>我们必须理解 this 在 JavaScript 中如何工作，这在许多语言都很难。<br>你必须去理解 JavaScript 中 this 的工作方式，这与其他语言存在巨大差异。</p>
+<p>You have to remember to bind the event handlers.<br>你不得不记住将 this 绑定到事件处理上。<br>还不能忘记绑定事件处理器</p>
+<p>Without unstable <strong>syntax proposals</strong>, the code is very <strong>verbose</strong>.<br>因为没有稳定的语法规范，代码变得很啰嗦<br>没有稳定的语法提案，这些代码非常冗余。</p>
+<p>People can understand props, state, and <strong>top-down</strong> data flow perfectly well but still struggle with classes.<br>人们可以很好的理解 props，state，和整个数据流，但是在学习类时苦苦挣扎<br>大家可以很好地理解 props，state 和自顶向下的数据流，但对 class 却一筹莫展。</p>
+<p>The distinction between <strong>function and class components</strong> in React and when to use each one leads to disagreements even between experienced React developers.<br>函数和类的区别，以及何时用函数何时用类，这些问题在经验丰富的 React 开发者中都有分歧。<br>即便在有经验的 React 开发者之间，对于函数组件与 class 组件的差异也存在分歧，甚至还要区分两种组件的使用场景。</p>
+<p>Additionally, React has been out for about five years, and we want to make sure it <strong>stays relevant</strong> in the next five years.<br>React 已经发布大约五年了，我们希望在未来五年他也能保存<br>另外，React 已经发布五年了，我们希望它能在下一个五年也与时俱进。</p>
+<p>As Svelte, Angular, Glimmer, and others show, ahead-of-time compilation of components has a lot of future potential.<br>就像 Svelte，Angular，Glimmer 和其他库所展示的，提前编译组件在未来有很大的潜力。<br>就像 Svelte，Angular，Glimmer 等其它的库展示的那样，组件预编译会带来巨大的潜力。</p>
+<p>Especially if it’s not <strong>limited to templates</strong>.<br>特别是，如果不限制到模版<br>尤其是在它不局限于模板的时候。</p>
+<p>Recently, we’ve been experimenting with component folding using Prepack, and we’ve seen <strong>promising（有希望的） early results</strong>.<br>最近，我们用 Prepack 进行了组件折叠的实验，看到了和预期一致的结果。<br>最近，我们一直在使用 Prepack 来试验 component folding，也取得了初步成效。</p>
+<p>However, we found that class components can <strong>encourage unintentional</strong> patterns that make these optimizations <strong>fall back(倒退)</strong> to a slower path.<br>虽然，我们发现类组件可以激发一种让潜在的，一步步优化的模式。<br>但是我们发现使用 class 组件会无意中鼓励开发者使用一些让优化措施无效的方案。</p>
+<p>Classes present issues for today’s tools, too.<br>这也是类对于当前工具的问题。<br>class 也给目前的工具带来了一些问题。</p>
+<p>For example, classes don’t <strong>minify</strong> very well, and they make hot reloading flaky and unreliable.<br>比如，类无法很好的精简，并且让热加在变得不稳定。<br>例如，class 不能很好的压缩，并且会使热重载出现不稳定的情况。</p>
+<p>We want to present an API that makes it more likely for code to <strong>stay on the optimizable path</strong>.<br>我们希望呈现的 API 可以让代码一直可以优化。<br>因此，我们想提供一个使代码<strong>更易于优化</strong>的 API。</p>
+<p>To solve these problems, Hooks let you use more of React’s features without classes.<br>为了解决这个问题，Hooks 鼓励不用类的情况下使用 React 的特性。<br>为了解决这些问题，Hook 使你在非 class 的情况下可以使用更多的 React 特性。</p>
+<p>Conceptually, React components have always been closer to functions.<br>从概念上讲，React 组件更接近于函数。<br>从概念上讲，React 组件一直更像是函数。</p>
+<p>Hooks <strong>embrace</strong> functions, but without sacrificing the <strong>practical spirit</strong> of React.<br>Hooks 增强了函数，但是没有稀释 React 的真正精神。<br>而 Hook 则拥抱了函数，同时也没有牺牲 React 的精神原则。</p>
+<p>Hooks provide access to imperative escape hatches and don’t require you to learn complex functional or reactive programming techniques.<br>Hooks 给你提供了势在必行的逃生舱口，还不需要你去学习负载的函数式或者响应式的编程技术。<br>Hook 提供了问题的解决方案，无需学习复杂的函数式或响应式编程技术。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CS/" rel="tag"># CS</a>
+          
+            <a href="/tags/English/" rel="tag"># English</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/30/update-dairy2/" rel="next" title="升级日记（二）">
+                <i class="fa fa-chevron-left"></i> 升级日记（二）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/imgs/avatar.JPG" alt="小困">
+            
+              <p class="site-author-name" itemprop="name">小困</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#react-document-Hooks"><span class="nav-number">1.</span> <span class="nav-text">react document(Hooks)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍-Hooks"><span class="nav-number">1.1.</span> <span class="nav-text">介绍 Hooks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视频介绍"><span class="nav-number">1.2.</span> <span class="nav-text">视频介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#没有重大变化（no-breaking-changes）没有破坏性改动"><span class="nav-number">1.3.</span> <span class="nav-text">没有重大变化（no breaking changes）没有破坏性改动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动机"><span class="nav-number">1.4.</span> <span class="nav-text">动机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在组件间复用有状态的逻辑是困难的"><span class="nav-number">1.4.1.</span> <span class="nav-text">在组件间复用有状态的逻辑是困难的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复杂组件变得难以理解（Complex-components-become-hard-to-understand）"><span class="nav-number">1.4.2.</span> <span class="nav-text">复杂组件变得难以理解（Complex components become hard to understand）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类让人和机器都很困惑（Classes-confuse-both-people-and-machines）（难以理解的-class）"><span class="nav-number">1.4.3.</span> <span class="nav-text">类让人和机器都很困惑（Classes confuse both people and machines）（难以理解的 class）</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小困</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
